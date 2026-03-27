@@ -1,0 +1,51 @@
+{
+  "manifest_version": 3,
+  "name": "Context Switch Killer",
+  "description": "Reduce context switching with smart tab detection, grouped workflows, and instant session restore.",
+  "version": "1.0.0",
+  "minimum_chrome_version": "116",
+  "permissions": [
+    "tabs",
+    "storage",
+    "alarms",
+    "tabGroups",
+    "sidePanel"
+  ],
+  "action": {
+    "default_title": "Context Switch Killer",
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon-16.png",
+      "32": "icons/icon-32.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon-16.png",
+    "32": "icons/icon-32.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
+  },
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "commands": {
+    "save-current-session": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+S",
+        "mac": "Command+Shift+S"
+      },
+      "description": "Save the current browser session"
+    },
+    "group-current-tabs": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+G",
+        "mac": "Command+Shift+G"
+      },
+      "description": "Group the current window's tabs by context"
+    }
+  },
+  "side_panel": {
+    "default_path": "sidepanel.html"
+  }
+}

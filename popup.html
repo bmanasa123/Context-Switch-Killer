@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Context Switch Killer</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="app-body app-body--popup">
+    <main class="app-shell">
+      <section class="hero-panel">
+        <div class="hero-top">
+          <p class="eyebrow">Flow Command Center</p>
+          <span class="live-pill">Auto-save every 5 min</span>
+        </div>
+
+        <div class="hero-copy">
+          <h1>Context Switch Killer</h1>
+          <p>
+            Detect what you are doing, bundle related tabs together, and jump
+            back into the same working mode without the tab sprawl.
+          </p>
+        </div>
+
+        <div class="hero-grid">
+          <article class="focus-card">
+            <p class="card-label">Current focus</p>
+            <h2 id="currentFocusTitle">Scanning your tabs...</h2>
+            <p id="currentFocusMeta" class="focus-meta">
+              Looking at your current window.
+            </p>
+            <p id="currentFocusSummary" class="focus-summary">
+              Your category breakdown will show up here.
+            </p>
+          </article>
+
+          <div class="stat-stack">
+            <article class="stat-card">
+              <span id="openTabCount" class="stat-value">0</span>
+              <span class="stat-label">Open tabs</span>
+            </article>
+            <article class="stat-card">
+              <span id="sessionCount" class="stat-value">0</span>
+              <span class="stat-label">Saved sessions</span>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel action-panel">
+        <div class="section-heading">
+          <div>
+            <p class="section-label">Quick Actions</p>
+            <h2>Capture or clean up this window</h2>
+          </div>
+        </div>
+
+        <div id="statusMessage" class="status-message" aria-live="polite"></div>
+
+        <label class="input-label" for="sessionName">Session name</label>
+        <input
+          id="sessionName"
+          class="text-input"
+          type="text"
+          maxlength="80"
+          placeholder="Leave blank for smart naming"
+        />
+
+        <div class="action-grid">
+          <button id="saveSessionButton" class="primary-button" type="button">
+            Save Session
+          </button>
+          <button id="groupTabsButton" class="secondary-button" type="button">
+            Group Tabs
+          </button>
+          <button id="restoreLastButton" class="secondary-button" type="button">
+            Restore Last
+          </button>
+          <button id="openSidePanelButton" class="ghost-button" type="button">
+            Open Side Panel
+          </button>
+        </div>
+
+        <p class="helper-text">
+          Keyboard shortcuts: <strong>Ctrl+Shift+S</strong> to save and
+          <strong>Ctrl+Shift+G</strong> to group. Chrome auto-saves the latest
+          10 background snapshots for you.
+        </p>
+      </section>
+
+      <section class="panel sessions-panel">
+        <div class="section-heading">
+          <div>
+            <p class="section-label">Saved Sessions</p>
+            <h2>Restore your work in one click</h2>
+          </div>
+          <span id="sessionCountPill" class="count-pill">0 total</span>
+        </div>
+
+        <div id="emptyState" class="empty-state" hidden>
+          No saved sessions yet. Save your current window to start building a
+          focused library of work contexts.
+        </div>
+
+        <div id="sessionsList" class="sessions-list"></div>
+      </section>
+    </main>
+
+    <script type="module" src="popup.js"></script>
+  </body>
+</html>
